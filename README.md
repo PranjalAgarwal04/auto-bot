@@ -5,11 +5,13 @@ This is the whatsApp bot for booking an auto.
 ## How to Build a Chatbot
 
 - Create accounts on:
-  - [ ] [OpenAI](https://chat.openai.com/auth/login?next=%2F)
+  - [ ] [OpenAI](https://platform.openai.com/overview)
   - [ ] [twilio](https://www.twilio.com/try-twilio)
   - [ ] [aws](https://portal.aws.amazon.com/billing/signup?exp=default&sc_icampaign=acq_aws_takeover-default&sc_ichannel=ha&sc_icontent=awssm-evergreen_pac_default&sc_iplace=hero&trk=ha_awssm-evergreen_pac_default&redirect_url=https%3A%2F%2Faws.amazon.com%2Fregistration-confirmation#/start/email)
   - [ ] [ngrok](https://dashboard.ngrok.com/signup)
-- Create `twilio` sandbox
+
+- Open `twilio` console
+  - `Messaging` > `Try it out` > `Send a WhatsApp message`
 - Create `flask` app
 - Launch `EC2` in `aws`
 - Install requirements in `EC2`
