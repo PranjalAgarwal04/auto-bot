@@ -13,6 +13,12 @@ This is the whatsApp bot for booking an auto.
 - Open `twilio` console
   - `Messaging` > `Try it out` > `Send a WhatsApp message`
 - Create `flask` app
+  - Install dependencies
+
+    ```bash
+    pip install Flask openai twilio
+    ```
+
 - Launch `EC2` in `aws`
 - Install requirements in `EC2`
 - Setup credentials in `EC2`
