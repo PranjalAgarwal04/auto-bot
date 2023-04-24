@@ -16,7 +16,7 @@ This is the whatsApp bot for booking an auto.
   - Install dependencies
 
     ```bash
-    pip install Flask openai twilio
+    pip install -r requirements.txt
     ```
 
 - Launch `EC2` in `aws`
