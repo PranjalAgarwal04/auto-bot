@@ -1,8 +1,22 @@
-# autoBot
+# AutoBot 🛺
 
-This is the whatsApp bot for booking an auto.
+This is the WhatsApp bot for booking an auto rickshaw.
 
-## How to Build a Chatbot
+## Pre-requisites 💡
+
+- [ ] [OpenAI](https://platform.openai.com/overview)
+  - [ ] Credit card
+- [ ] [twilio](https://www.twilio.com/en-us)
+  - [ ] WhatsApp
+  - [ ] Phone number
+- [ ] [aws](https://aws.amazon.com/)
+- [ ] [ngrok](https://ngrok.com/)
+- [ ] [Python](https://www.python.org/)
+- [ ] [pip](https://pip.pypa.io/en/stable/)
+- [ ] [Ubuntu](https://ubuntu.com/)
+- [ ] Costs `$0.0002` per request
+
+## How to Build a Chatbot ⚒️
 
 - Create accounts on:
   - [ ] [OpenAI](https://platform.openai.com/overview)
@@ -240,11 +254,6 @@ dashboard > `Getting Started` > `Your Authtoken` and copy your token.
           ```
 
     - Visit twilio sandbox and add `ngrok` url in `When a message comes in` section.
-- Install requirements in `EC2`
-- Setup credentials in `EC2`
-- Run `flask` app in `EC2`
-- Run `ngrok` on same port as `flask` app
-- Setup `ngrok` `url` in `twilio` sandbox
 
 ## References
 
