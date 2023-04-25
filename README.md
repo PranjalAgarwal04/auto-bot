@@ -239,6 +239,7 @@ dashboard > `Getting Started` > `Your Authtoken` and copy your token.
           https://<random string>.ngrok-free.app/chatgpt
           ```
 
+    - Visit twilio sandbox and add `ngrok` url in `When a message comes in` section.
 - Install requirements in `EC2`
 - Setup credentials in `EC2`
 - Run `flask` app in `EC2`
