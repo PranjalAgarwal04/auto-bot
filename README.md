@@ -255,11 +255,11 @@ dashboard > `Getting Started` > `Your Authtoken` and copy your token.
 
     - Visit twilio sandbox and add `ngrok` url in `When a message comes in` section.
 
-## References
+## References 📑
 
 - [Machine Learning Hub](https://youtu.be/Fej2wb4YHes)
 
-## Authors
+## Authors 🧿
 
 - [@pranjal](https://github.com/PranjalAgarwal04)
 - [@prajesh](https://github.com/prajeshElEvEn)
