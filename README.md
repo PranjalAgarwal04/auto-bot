@@ -85,13 +85,13 @@ This is the whatsApp bot for booking an auto.
   - Click on `Instance ID` and click on `Connect` and under `SSH client` copy the `3.` command and run it in the terminal opened from folder containing the `.pem` key pair file.
 
     ```bash
-    chmod 400 pranjal-prajesh-autobot.pem
+    chmod 400 <key pair file name>
     ```
 
   - Connect to `EC2` instance by copying `Example` command in terminal.
 
     ```bash
-    ssh -i "pranjal-prajesh-autobot.pem" ubuntu@ec2-54-199-116-65.ap-northeast-1.compute.amazonaws.com
+    ssh -i "<key pair file name>" ubuntu@ec2-54-199-116-65.ap-northeast-1.compute.amazonaws.com
     ```
 
   - In `EC2 Instance` Terminal
@@ -218,14 +218,26 @@ dashboard > `Getting Started` > `Your Authtoken` and copy your token.
     - Open a new terminal and connect to `EC2` instance
 
       ```bash
-      ssh -i "pranjal-prajesh-autobot.pem" ubuntu@ec2-54-199-116-65.ap-northeast-1.compute.amazonaws.com
+      ssh -i "<key pair file name>" ubuntu@ec2-54-199-116-65.ap-northeast-1.compute.amazonaws.com
       ```
 
-    - Run `flask` app
+    - Run `flask` app in one terminal
 
         ```bash
         python3 main.py
         ```
+
+    - Run `ngrok` in another terminal
+
+        ```bash
+        ngrok http 5000
+        ```
+
+      - Copy the `Forwarding` `url` and add route `/chatgpt` in url
+
+          ```bash
+          https://<random string>.ngrok-free.app/chatgpt
+          ```
 
 - Install requirements in `EC2`
 - Setup credentials in `EC2`
