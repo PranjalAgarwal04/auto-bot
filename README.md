@@ -113,113 +113,119 @@ This is the whatsApp bot for booking an auto.
       apt upgrade -y
       ```
 
-    - Install and `pip`
+    - Install `pip`
 
       ```bash
       apt install python3-pip -y
       ```
 
-      - Create `requirements.txt` file and write all dependencies in it.
+    - Create `requirements.txt` file and write all dependencies in it.
 
-        ```bash
-        nano requirements.txt
-        ```
+      ```bash
+      nano requirements.txt
+      ```
 
-        ```txt
-        Flask
-        openai
-        twilio
-        pyngrok
-        ```
+      ```txt
+      Flask
+      openai
+      twilio
+      pyngrok
+      ```
 
-        - Press `Ctrl+s` to save and `Ctrl+x` to exit.
-      - Install dependencies
+      - Press `Ctrl+s` to save and `Ctrl+x` to exit.
+    - Install dependencies
 
-        ```bash
-        python3 -m pip install -r requirements.txt
-        ```
+      ```bash
+      python3 -m pip install -r requirements.txt
+      ```
 
-      - Install `ngrok`
+    - Install `ngrok`
 
-        ```bash
-        ngrok
-        ```
+      ```bash
+      ngrok
+      ```
 
-      - Goto [ngrok](https://dashboard.ngrok.com/get-started/setup)
+    - Goto [ngrok](https://dashboard.ngrok.com/get-started/setup)
 dashboard > `Getting Started` > `Your Authtoken` and copy your token.
-      - In `EC2` terminal connect to `ngrok`
+    - In `EC2` terminal connect to `ngrok`
+
+      ```bash
+      ngrok authtoken <your ngrok token>
+      ```
+
+    - Export `openAI` api key
+
+      ```bash
+      export OPENAI_API_KEY=<your openAI api key>
+      ```
+
+    - You can run `printenv` to check if `OPENAI_API_KEY` is set.
+    - Create `flask` script in `EC2`
+
+      ```bash
+      nano main.py
+      ```
+
+      ```python
+      from flask import Flask, request, jsonify
+      import openai
+      from twilio.twiml.messaging_response import MessagingResponse
+      import os
+
+      app = Flask(__name__)
+
+      openai.api_key = os.environ.get("OPENAI_API_KEY")
+
+      def generate_response(query):
+          model_engine = "text-davinci-002"
+          prompt = (f"Q: {query}\n"
+                    "A:")
+          response = openai.Completion.create(
+              engine=model_engine,
+              prompt=prompt,
+              max_tokens=1024,
+              n=1,
+              stop=None,
+              temperature=0.7,
+          )
+
+          answer = response.choices[0].text.strip()
+          return answer
+
+      @app.route('/chatgpt', methods=['POST'])
+      def chatgpt():
+          incoming_query = request.values.get('Body', '').lower()
+          answer = generate_response(incoming_query)
+          resp = MessagingResponse()
+          msg = resp.message()
+          msg.body(answer)
+          return str(resp)
+
+      if __name__ == '__main__':
+          app.run(
+              host='0.0.0.0',
+              port=5000,
+              debug=False
+          )
+      ```
+
+      - Press `Ctrl+s` to save and `Ctrl+x` to exit.
+
+    - Change settings in `EC2` console
+      - Go back to `Instance ID` and click on `Security` > `Security Groups` and click on security Group ID
+      - Click on `Edit Inbound Rules` > `Add rule`
+      - Select `Custom TCP` in `Type` and `5000` in `Port Range` and `Source` as `Anywhere-IPv4` and click on `Save rules`
+    - Open a new terminal and connect to `EC2` instance
+
+      ```bash
+      ssh -i "pranjal-prajesh-autobot.pem" ubuntu@ec2-54-199-116-65.ap-northeast-1.compute.amazonaws.com
+      ```
+
+    - Run `flask` app
 
         ```bash
-        ngrok authtoken <your ngrok token>
+        python3 main.py
         ```
-
-      - Export `openAI` api key
-
-        ```bash
-        export OPENAI_API_KEY=<your openAI api key>
-        ```
-
-      - You can run `printenv` to check if `OPENAI_API_KEY` is set.
-      - Create `flask` script in `EC2`
-
-        ```bash
-        nano main.py
-        ```
-
-        ```python
-        from flask import Flask, request, jsonify
-        import openai
-        from twilio.twiml.messaging_response import MessagingResponse
-        import os
-
-        app = Flask(__name__)
-
-        openai.api_key = os.environ.get("OPENAI_API_KEY")
-
-        def generate_response(query):
-            model_engine = "text-davinci-002"
-            prompt = (f"Q: {query}\n"
-                      "A:")
-            response = openai.Completion.create(
-                engine=model_engine,
-                prompt=prompt,
-                max_tokens=1024,
-                n=1,
-                stop=None,
-                temperature=0.7,
-            )
-
-            answer = response.choices[0].text.strip()
-            return answer
-
-        @app.route('/chatgpt', methods=['POST'])
-        def chatgpt():
-            incoming_query = request.values.get('Body', '').lower()
-            answer = generate_response(incoming_query)
-            resp = MessagingResponse()
-            msg = resp.message()
-            msg.body(answer)
-            return str(resp)
-
-        if __name__ == '__main__':
-            app.run(
-                host='0.0.0.0',
-                port=5000,
-                debug=False
-            )
-        ```
-
-        - Press `Ctrl+s` to save and `Ctrl+x` to exit.
-
-        - Change settings in `EC2` console
-          - Go back to `Instance ID` and click on `Security` > `Security Groups` and click on security Group ID
-          - Click on `Edit Inbound Rules` > `Add rule`
-          - Select `Custom TCP` in `Type` and `5000` in `Port Range` and `Source` as `Anywhere-IPv4` and click on `Save rules`
-        - Run `flask` app
-
-          ```bash
-          python3 main.py
-          ```
 
 - Install requirements in `EC2`
 - Setup credentials in `EC2`
