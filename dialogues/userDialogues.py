@@ -1,6 +1,5 @@
 query = input("> ")
 query = query.lower()
-print(query)
 
 if (query == "hello" or query == "hi" or query == "hey"):
     print("""Hello, do you want to book an auto?
@@ -39,8 +38,8 @@ if (query == "hello" or query == "hi" or query == "hey"):
             query = input("> ")
         print("Looking for the nearest auto driver...")
         print("""
-                  Auto Located - 
-                  Driver name - 
-                  Auto number - 
-                  Contact number - 
+                  Auto Located -
+                  Driver name -
+                  Auto number -
+                  Contact number -
                   """)
