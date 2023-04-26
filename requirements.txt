@@ -2,3 +2,5 @@ Flask
 openai
 twilio
 pyngrok
+pyrebase
+firebase
