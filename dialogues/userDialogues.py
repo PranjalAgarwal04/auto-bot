@@ -36,10 +36,9 @@ if (query == "hello" or query == "hi" or query == "hey"):
                     2-Source location five
                     3-Source location six
                """)
-
             query = input("> ")
-            print("Looking for the nearest auto driver...")
-            print("""
+        print("Looking for the nearest auto driver...")
+        print("""
                   Auto Located - 
                   Driver name - 
                   Auto number - 
