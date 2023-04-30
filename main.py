@@ -25,32 +25,27 @@ def generate_response(query):
     return answer
 
 
-@app.route('/chatgpt', methods=['POST'])
-def chatgpt():
-
-    # gets the query from whatsapp
-    incoming_query = request.values.get('Body', '').lower()
-
-    if (incoming_query == "hi" or incoming_query == "hello" or incoming_query == "hey"):
+def check(q):
+    if (q == "hi" or q == "hello" or q == "hey"):
         answer = """*Hello!*
     How may I help you?
     Type the commands below to get started:
     -> ```book``` - To book an auto
     -> ```report``` - To report an issue
     -> ```help``` - To get help"""
-    elif (incoming_query == "book"):
+    elif (q == "book"):
         answer = """*Book an auto*
     Enter your current location."""
-    elif (incoming_query == "report"):
+    elif (q == "report"):
         answer = """*Report an issue*
     Please write down your issue."""
-    elif (incoming_query == "help"):
+    elif (q == "help"):
         answer = """*Help*
     By sending ```hi/hello/hey```, the bot gets activated. Then, you can book an auto to reach to your final destination. In case of any issue, kindly select ```report``` option and the issue will be resolved as soon as possible."""
-    elif (incoming_query == "delhi"):
+    elif (q == "delhi"):
         answer = """You chose ```Delhi``` as your current location.
     Tell me your destination."""
-    elif (incoming_query == "mumbai"):
+    elif (q == "mumbai"):
         answer = """You chose ```Mumbai``` as your destination.
 
     Looking for the nearest auto driver...
@@ -61,7 +56,16 @@ def chatgpt():
     Contact number: 9876543210"""
     else:
         # calls for chatgpt to answer the query
-        answer = generate_response(incoming_query)
+        answer = generate_response(q)
+
+
+@app.route('/chatgpt', methods=['POST'])
+def chatgpt():
+
+    # gets the query from whatsapp
+    incoming_query = request.values.get('Body', '').lower()
+
+    answer = check(incoming_query)
 
     # sends the answer back to whatsapp
     resp = MessagingResponse()
