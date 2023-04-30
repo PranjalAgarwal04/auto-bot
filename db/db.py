@@ -22,7 +22,7 @@ userRef.set({
     '2': {
         'name': {
             'firstName': 'Prajesh',
-            'lastName': 'Singh',
+            'lastName': 'Pratap Singh',
         },
         'phone': '6393318060',
     },

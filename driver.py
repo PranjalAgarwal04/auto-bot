@@ -29,9 +29,9 @@ def check(q):
     if (q == "hi" or q == "hello" or q == "hey"):
         answer = """*Booking request!*
 Delhi -> Mumbai
-Requested by: Pranjal(+91 6393318060)
-Rent: Rs. 500
-Distance: 1400 km
+Requested by: Pranjal(8791224496)
+Rent: Rs. 120
+Distance: 6 km
 
 What do you want to do?:
     -> ```accept``` - To accept the request

@@ -45,19 +45,19 @@ Please write down your issue."""
         answer = """*Help*
 
 By sending ```hi/hello/hey```, the bot gets activated. Then, you can book an auto to reach to your final destination. In case of any issue, kindly select ```report``` option and the issue will be resolved as soon as possible."""
-    elif (q == "delhi"):
-        answer = """You chose ```Delhi``` as your current location.
+    elif (q == "muradnagar"):
+        answer = """You chose ```Muradnagar``` as your current location.
 
 Tell me your destination."""
-    elif (q == "mumbai"):
-        answer = """You chose ```Mumbai``` as your destination.
+    elif (q == "raj nagar extension"):
+        answer = """You chose ```Raj Nagar Extension``` as your destination.
 
 Looking for the nearest auto driver..."""
     elif (q == "otp"):
         answer = """*Auto Located!*
-Driver: Ramesh
-Auto number: DL 01 AB 1234
-Contact number: 9876543210
+Driver: Suresh
+Auto number: DL 34 4859
+Contact number: 9645702090
 Your OTP for the ride is ```4554```."""
     elif (q == "start"):
         answer = """Ride started!"""
