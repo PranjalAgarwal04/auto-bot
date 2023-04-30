@@ -16,6 +16,32 @@ This is the WhatsApp bot for booking an auto rickshaw.
 - [ ] [Ubuntu](https://ubuntu.com/)
 - [ ] Costs `$0.0002` per request
 
+## Usage ⚙️
+
+- Open two terminal and connect to  `EC2` in both terminals
+
+  ```bash
+  ssh -i "<key pair file name>" ubuntu@ec2-54-199-116-65.ap-northeast-1.compute.amazonaws.com
+  ```
+
+- Give super user access in both terminals
+
+    ```bash
+    sudo su
+    ```
+
+- In one terminal run `flask` app
+
+  ```bash
+  python3 main.py
+  ```
+
+- In another terminal run `ngrok`
+
+  ```bash
+  ngrok http 5000
+  ```
+
 ## How to Build a Chatbot ⚒️
 
 - Create accounts on:
@@ -258,6 +284,7 @@ dashboard > `Getting Started` > `Your Authtoken` and copy your token.
 ## References 📑
 
 - [Machine Learning Hub](https://youtu.be/Fej2wb4YHes)
+- [Data Stream](https://youtu.be/mNMv3WNgp0c)
 
 ## Authors 🧿
 

@@ -3,9 +3,9 @@ print(""" Booking request...
           Rent:
           Distance:
           Customer name:
-          Customer number: 
+          Customer number:
 """)
-print(""" 
+print("""
           1-Accept
           2-Decline
           3-Wait

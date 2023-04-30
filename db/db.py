@@ -22,7 +22,7 @@ userRef.set({
     '2': {
         'name': {
             'firstName': 'Prajesh',
-            'lastName': 'Singh',
+            'lastName': 'Pratap Singh',
         },
         'phone': '6393318060',
     },
@@ -31,28 +31,28 @@ userRef.set({
 driverRef = db.reference('Drivers/')
 driverRef.set({
     '1': {
-        'name': 'Agarwal',
-        'phone': '8791224496',
+        'name': 'Rajesh',
+        'phone': '9645702090',
         'vehicleNumber': 'DL 1C 1234',
     },
     '2': {
-        'name': 'Singh',
-        'phone': '6393318060',
-        'vehicleNumber': 'DL 1C 1235',
+        'name': 'Suresh',
+        'phone': '6943452091',
+        'vehicleNumber': 'DL 34 4859',
     },
 })
 
 # update data to firebase
-toRef = userRef.child('2').child('name')
-toRef.update({
-    'lastName': 'Pratap Singh',
-})
+# toRef = userRef.child('2').child('name')
+# toRef.update({
+#     'lastName': 'Pratap Singh',
+# })
 
 # delete data from firebase
 # toRef = userRef.child('2')
 # toRef.delete()
 
 # read data from firebase
-fromRef = userRef.child('1')
-fromData = fromRef.get()
-print(fromData)
+# fromRef = userRef.child('1')
+# fromData = fromRef.get()
+# print(fromData)
