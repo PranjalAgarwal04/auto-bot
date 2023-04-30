@@ -27,8 +27,17 @@ def generate_response(query):
 
 @app.route('/chatgpt', methods=['POST'])
 def chatgpt():
+
+    # gets the query from whatsapp
     incoming_query = request.values.get('Body', '').lower()
-    answer = generate_response(incoming_query)
+
+    if (incoming_query == "hi"):
+        answer = "Hi, I am a chatbot. Ask me anything."
+    else:
+        # calls for chatgpt to answer the query
+        answer = generate_response(incoming_query)
+
+    # sends the answer back to whatsapp
     resp = MessagingResponse()
     msg = resp.message()
     msg.body(answer)
