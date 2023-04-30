@@ -28,7 +28,7 @@ def generate_response(query):
 def check(q):
     if (q == "hi" or q == "hello" or q == "hey"):
         answer = """*Booking request!*
-Delhi -> Mumbai
+Muradnagar -> Raj Nagar Extension
 Requested by: Pranjal(8791224496)
 Rent: Rs. 120
 Distance: 6 km

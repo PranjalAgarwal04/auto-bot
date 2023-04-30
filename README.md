@@ -16,6 +16,10 @@ This is the WhatsApp bot for booking an auto rickshaw.
 - [ ] [Ubuntu](https://ubuntu.com/)
 - [ ] Costs `$0.0002` per request
 
+## Block Diagram 🗺️
+
+![Diagram](./assets/images/block-diagram.png?raw=true "Diagram")
+
 ## Usage ⚙️
 
 - Open two terminal and connect to  `EC2` in both terminals
@@ -33,7 +37,7 @@ This is the WhatsApp bot for booking an auto rickshaw.
 - In one terminal run `flask` app
 
   ```bash
-  python3 main.py
+  python3 user.py
   ```
 
 - In another terminal run `ngrok`
