@@ -25,36 +25,43 @@ def generate_response(query):
     return answer
 
 
-@app.route('/chatgpt', methods=['POST'])
-def chatgpt():
-
-    # gets the query from whatsapp
-    incoming_query = request.values.get('Body', '').lower()
-
-    if (incoming_query == "hi" or incoming_query == "hello" or incoming_query == "hey"):
+def check(q):
+    if (q == "hi" or q == "hello" or q == "hey"):
         answer = """*Booking request!*
-    Delhi -> Mumbai
-    Requested by: Pranjal(+91 6393318060)
-    Rent: Rs. 500
-    Distance: 1400 km
+Delhi -> Mumbai
+Requested by: Pranjal(+91 6393318060)
+Rent: Rs. 500
+Distance: 1400 km
 
-    What do you want to do?:
+What do you want to do?:
     -> ```accept``` - To accept the request
     -> ```decline``` - To decline the request
     -> ```wait``` - To wait for sometime"""
-    elif (incoming_query == "accept"):
+    elif (q == "accept"):
         answer = """Enter the OTP"""
-    elif (incoming_query == "4554"):
+    elif (q == "4554"):
         answer = """Ride started!"""
-    elif (incoming_query == "decline"):
+    elif (q == "end"):
+        answer = """Ride ended!
+How was your experience with the customer?
+Rate from 1 - 5."""
+    elif (q == "1" or q == "2" or q == "3" or q == "4" or q == "5"):
+        answer = """Thanks for giving us the feedback!
+Your valuable feedback means a lot to us."""
+    elif (q == "decline"):
         answer = """You've declined the request!"""
-    elif (incoming_query == "wait"):
+    elif (q == "wait"):
         answer = """You've asked to wait. Will contact you soon!"""
     else:
         # calls for chatgpt to answer the query
-        answer = generate_response(incoming_query)
+        answer = generate_response(q)
+    return answer
 
-    # sends the answer back to whatsapp
+
+@app.route('/chatgpt', methods=['POST'])
+def chatgpt():
+    incoming_query = request.values.get('Body', '').lower()
+    answer = check(incoming_query)
     resp = MessagingResponse()
     msg = resp.message()
     msg.body(answer)
